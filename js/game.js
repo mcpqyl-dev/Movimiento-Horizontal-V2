@@ -274,7 +274,7 @@ const app = document.getElementById('app');
     const DEPT_COORDS = {
       'almacen-de-concentrado-y-operaciones-portuarias': { x: 260, y: 200 },
       'almacenes-y-control-de-inventario':               { x: 650, y: 200 },
-      'direccion-de-logistica-y-comercial':              { x: 1000, y: 310 },
+      'direccion-de-logistica-y-comercial':              { x: 1000, y: 340 },
       'comercial':                                       { x: 1400, y: 190 },
       'compras-y-contratos':                             { x: 550, y: 580 },
       'transporte-y-trafico-internacional':              { x: 1360, y: 500 }

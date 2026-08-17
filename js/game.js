@@ -19,9 +19,23 @@ const app = document.getElementById('app');
     }
 
     function getDisplayCategoryTitle(title) {
-      return String(title || '').trim().toLowerCase() === 'analista'
-        ? 'Analista/Coordinador'
-        : title;
+      const text = String(title || '').trim();
+      if (text.toLowerCase() === 'analista') return 'Analista/Coordinador';
+      return getDisplayText(text);
+    }
+
+    function getDisplayText(value) {
+      if (value === null || value === undefined) return value;
+      return String(value)
+        .replace(/Direcci[oó]n de L[óo]gistica y Comercial/gi, 'Control de Costos y Sistemas')
+        .replace(/Gerencia de Direcci[oó]n de L[óo]gistica y Comercial/gi, 'Gerencia de Control de Costos y Sistemas')
+        .replace(/Responsable de Direcci[oó]n de L[óo]gistica y Comercial/gi, 'Responsable de Control de Costos y Sistemas')
+        .replace(/Bienvenido al área de Direcci[oó]n de L[óo]gistica y Comercial/gi, 'Bienvenido al área de Control de Costos y Sistemas')
+        .replace(/Área de Direcci[oó]n de L[óo]gistica y Comercial/gi, 'Área de Control de Costos y Sistemas');
+    }
+
+    function getDisplayDepartmentTitle(title) {
+      return getDisplayText(title);
     }
 
     const roleOptions = ((window.positionCategories && window.positionCategories.length)
@@ -552,7 +566,7 @@ const app = document.getElementById('app');
                     <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
                   </filter>
                 </defs>
-                <image href="images/map.webp" x="0" y="0" width="1560" height="640" preserveAspectRatio="xMidYMid meet"/>
+                <image href="images/map2.png" x="0" y="0" width="1560" height="640" preserveAspectRatio="xMidYMid meet"/>
                 ${visibleDepartments.map(dep => `${renderDepartmentBuilding(dep)}`).join('')}
               </svg>
               <div class="avatar ${state.moving ? 'walking' : 'idle'}" id="avatar" style="left:${state.avatarPosition.x}px; top:${state.avatarPosition.y}px;">
@@ -694,7 +708,7 @@ const app = document.getElementById('app');
           ${renderHud()}
           <div class="positions-container">
             <div class="positions-header" style="background: linear-gradient(135deg, ${dep.color}20 0%, ${dep.color}40 100%); border-left: 5px solid ${dep.color}; padding: 28px; border-radius: 16px; margin-bottom: 24px;">
-              <h2 style="font-size: 40px; margin: 0; line-height: 1.1;">${dep.title}</h2>
+              <h2 style="font-size: 40px; margin: 0; line-height: 1.1;">${getDisplayDepartmentTitle(dep.title)}</h2>
             </div>
             
             <div style="margin-bottom: 20px;">
@@ -751,7 +765,7 @@ const app = document.getElementById('app');
           <div class="department-shell">
             <div class="department-card">
               <h3>${position.title}</h3>
-              <p style="margin:0 0 10px 0; color:#cfe5fa; font-size:14px;"><strong style="color:#f1f8ff;">Área:</strong> ${dep.title}</p>
+              <p style="margin:0 0 10px 0; color:#cfe5fa; font-size:14px;"><strong style="color:#f1f8ff;">Área:</strong> ${getDisplayDepartmentTitle(dep.title)}</p>
               <h5 style="margin:0 0 8px 0; font-size:12px; color:var(--accent); text-transform:uppercase; letter-spacing:0.08em;">Detalles del puesto</h5>
               <p>${dep.description}</p>
               ${position.speciality || position.blurb ? `<p style="margin:10px 0 0 0; color:#c8ddf2; font-size:13px;"><strong style="color:#e7f4ff;">Especialidad:</strong> ${position.speciality || position.blurb}</p>` : ''}
@@ -815,7 +829,7 @@ const app = document.getElementById('app');
             ${renderHud()}
             <div class="department-shell">
               <div class="department-card">
-                <div class="meta">Mini juego · ${dep.title}</div>
+                <div class="meta">Mini juego · ${getDisplayDepartmentTitle(dep.title)}</div>
                 <h3>No hay preguntas disponibles para este puesto.</h3>
                 <p>Selecciona otro puesto para continuar explorando.</p>
               </div>
@@ -836,8 +850,8 @@ const app = document.getElementById('app');
           ${renderHud()}
           <div class="department-shell">
             <div class="department-card">
-              <div class="meta">Mini juego · ${dep.title}</div>
-              <h3>${question.question}</h3>
+              <div class="meta">Mini juego · ${getDisplayDepartmentTitle(dep.title)}</div>
+              <h3>${getDisplayText(question.question)}</h3>
               <p>Elige la opción más acertada y acumula XP con cada acierto.</p>
               ${renderQuizControls(question)}
             </div>
@@ -905,8 +919,8 @@ const app = document.getElementById('app');
               return `<div class="collection-card ${discovered ? 'unlocked' : 'locked'}">
                 <span class="check">${discovered ? '✓' : '○'}</span>
                 <div class="rarity">${stars}</div>
-                <strong>${dep.title}</strong>
-                <div style="color:var(--muted); margin-top:6px;">${dep.title}</div>
+                <strong>${getDisplayDepartmentTitle(dep.title)}</strong>
+                <div style="color:var(--muted); margin-top:6px;">${getDisplayDepartmentTitle(dep.title)}</div>
               </div>`;
             }).join('')}
           </div>
@@ -1597,7 +1611,7 @@ const app = document.getElementById('app');
         applyMissionRewards();
         showToast('✅ ¡Respuesta correcta! +40 XP');
         setTimeout(() => {
-          const achievementName = `${dep.title} en acción`;
+          const achievementName = `${getDisplayDepartmentTitle(dep.title)} en acción`;
           if (!state.achievements.includes(achievementName)) {
             unlockAchievement(achievementName);
           }
@@ -1642,7 +1656,7 @@ const app = document.getElementById('app');
       if (isCorrect) {
         gainXP(40);
         addDiscovery(dep);
-        unlockAchievement(`${dep.title} en acción`);
+        unlockAchievement(`${getDisplayDepartmentTitle(dep.title)} en acción`);
         state.completedQuizzes += 1;
         applyMissionRewards();
         showToast('✅ ¡Respuesta correcta! +40 XP');

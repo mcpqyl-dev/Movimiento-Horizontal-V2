@@ -25,15 +25,28 @@
             const areas =
                 options.areas || [];
 
+            const formatAreaLabel = (value = '') => {
+                return String(value)
+                    .replace(/Direcci[oó]n de L[óo]gistica y Comercial/gi, 'Control de Costos y Sistemas')
+                    .replace(/Gerencia de Direcci[oó]n de L[óo]gistica y Comercial/gi, 'Gerencia de Control de Costos y Sistemas')
+                    .replace(/Responsable de Direcci[oó]n de L[óo]gistica y Comercial/gi, 'Responsable de Control de Costos y Sistemas')
+                    .replace(/Bienvenido al área de Direcci[oó]n de L[óo]gistica y Comercial/gi, 'Bienvenido al área de Control de Costos y Sistemas')
+                    .replace(/Área de Direcci[oó]n de L[óo]gistica y Comercial/gi, 'Área de Control de Costos y Sistemas');
+            };
+
             const areaOptions = areas
                 .map(area => {
 
-                    const value =
+                    const rawValue =
                         area.title ||
                         area.name ||
                         '';
 
+                    const value =
+                        formatAreaLabel(rawValue);
+
                     const selected =
+                        profile.currentArea === rawValue ||
                         profile.currentArea === value
                             ? 'selected'
                             : '';
@@ -165,10 +178,7 @@
                                 <span>💡</span>
 
                                 <p>
-                                    Esta información se utiliza
-                                    únicamente para personalizar
-                                    tu experiencia dentro de
-                                    Career Quest.
+                                    Anímate a participar de esta experiencia.
                                 </p>
 
                             </div>

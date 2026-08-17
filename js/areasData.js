@@ -1293,13 +1293,12 @@
   const warehousesArea = areaCatalog.find(area => area.id === "almacenes-y-control-de-inventario");
   const inventoryPlanningArea = areaCatalog.find(area => area.id === "planeamiento-de-inventario");
   if (warehousesArea && inventoryPlanningArea) {
-    warehousesArea.title = "Almacenes, Control de Inventario y Planeamiento de Inventario";
-    warehousesArea.summary = `Área de ${warehousesArea.title}`;
-    warehousesArea.departmentTitle = `Gerencia de ${warehousesArea.title}`;
+    warehousesArea.summary = "Área de Almacenes y Control de Inventario";
+    warehousesArea.departmentTitle = "Gerencia de Almacenes y Control de Inventario";
     warehousesArea.description = `${warehousesArea.description} ${inventoryPlanningArea.description}`;
-    warehousesArea.npcRole = `Responsable de ${warehousesArea.title}`;
-    warehousesArea.quote = `Bienvenido al área de ${warehousesArea.title}`;
-    warehousesArea.mapLabel = "Almacenes e Inventario";
+    warehousesArea.npcRole = "Responsable de Almacenes y Control de Inventario";
+    warehousesArea.quote = "Bienvenido al área de Almacenes y Control de Inventario";
+    warehousesArea.mapLabel = "Almacenes";
     warehousesArea.positions.push(...inventoryPlanningArea.positions);
     areaCatalog.splice(areaCatalog.indexOf(inventoryPlanningArea), 1);
   }

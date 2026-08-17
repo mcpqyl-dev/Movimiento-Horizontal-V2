@@ -124,6 +124,22 @@ for row in ws_puestos.iter_rows(min_row=2, max_row=ws_puestos.max_row, values_on
 
     areas_by_name[area_name]["positions"].append(position)
 
+# Consolidar las áreas de almacenes y planeamiento de inventario en una sola área.
+warehouses_area_name = "Almacenes y Control de Inventario"
+inventory_planning_area_name = "Planeamiento de Inventario"
+if warehouses_area_name in areas_by_name and inventory_planning_area_name in areas_by_name:
+    warehouses_area = areas_by_name[warehouses_area_name]
+    inventory_planning_area = areas_by_name.pop(inventory_planning_area_name)
+    combined_area_name = "Almacenes, Control de Inventario y Planeamiento de Inventario"
+    warehouses_area["title"] = combined_area_name
+    warehouses_area["summary"] = f"Área de {combined_area_name}"
+    warehouses_area["departmentTitle"] = f"Gerencia de {combined_area_name}"
+    warehouses_area["description"] = f"{warehouses_area['description']} {inventory_planning_area['description']}"
+    warehouses_area["npcRole"] = f"Responsable de {combined_area_name}"
+    warehouses_area["quote"] = f"Bienvenido al área de {combined_area_name}"
+    warehouses_area["mapLabel"] = "Almacenes e Inventario"
+    warehouses_area["positions"].extend(inventory_planning_area["positions"])
+
 # Generar areasData.js
 areas_list = list(areas_by_name.values())
 js_output = f"""(function (global) {{

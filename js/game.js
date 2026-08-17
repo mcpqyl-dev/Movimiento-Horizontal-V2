@@ -277,7 +277,6 @@ const app = document.getElementById('app');
       'direccion-de-logistica-y-comercial':              { x: 1050, y: 220 },
       'comercial':                                       { x: 1400, y: 190 },
       'compras-y-contratos':                             { x: 550, y: 580 },
-      'planeamiento-de-inventario':                      { x: 970, y: 580 },
       'transporte-y-trafico-internacional':              { x: 1360, y: 500 }
     };
     departments.forEach(dep => {

@@ -7,12 +7,11 @@ const positionCategories = [
     "description": "Especialista en análisis y evaluación de procesos",
     "color": "#3B82F6",
     "areas": [
-      "Almacenes y Control de Inventario",
+      "Almacenes, Control de Inventario y Planeamiento de Inventario",
       "Almacén de Concentrado y Operaciones Portuarias",
       "Comercial",
       "Compras y Contratos",
       "Dirección de Logistica y Comercial",
-      "Planeamiento de Inventario",
       "Transporte y Tráfico Internacional"
     ]
   },
@@ -23,10 +22,9 @@ const positionCategories = [
     "description": "Liderazgo de equipos y áreas",
     "color": "#F59E0B",
     "areas": [
-      "Almacenes y Control de Inventario",
+      "Almacenes, Control de Inventario y Planeamiento de Inventario",
       "Almacén de Concentrado y Operaciones Portuarias",
       "Compras y Contratos",
-      "Planeamiento de Inventario",
       "Transporte y Tráfico Internacional"
     ]
   },
@@ -37,7 +35,7 @@ const positionCategories = [
     "description": "Dirección estratégica de operaciones",
     "color": "#EF4444",
     "areas": [
-      "Almacenes y Control de Inventario",
+      "Almacenes, Control de Inventario y Planeamiento de Inventario",
       "Almacén de Concentrado y Operaciones Portuarias",
       "Comercial",
       "Compras y Contratos",
@@ -51,12 +49,11 @@ const positionCategories = [
     "description": "Supervisión directa de equipos",
     "color": "#10B981",
     "areas": [
-      "Almacenes y Control de Inventario",
+      "Almacenes, Control de Inventario y Planeamiento de Inventario",
       "Almacén de Concentrado y Operaciones Portuarias",
       "Comercial",
       "Compras y Contratos",
       "Dirección de Logistica y Comercial",
-      "Planeamiento de Inventario",
       "Transporte y Tráfico Internacional"
     ]
   },

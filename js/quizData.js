@@ -206,7 +206,7 @@
   "planeamiento-de-inventario": [
     {
       "type": "choice",
-      "question": "De las siguientes opciones, ¿cuál NO es una función típica en el área de Planeamiento de Inventario?",
+      "question": "De las siguientes opciones, ¿cuál NO es una función típica en el área de Almacenes, Control de Inventario y Planeamiento de Inventario?",
       "options": [
         "Proponer alternativas de recuperación de inversión, identificando materiales inactivos en función a la ausencia de consumos y confirmar con los usuarios la condición de estos como obsoletos.",
         "Entrenar personal del área de ventas",
@@ -217,7 +217,7 @@
     },
     {
       "type": "choice",
-      "question": "De las siguientes opciones, ¿cuál NO es una función típica en el área de Planeamiento de Inventario?",
+      "question": "De las siguientes opciones, ¿cuál NO es una función típica en el área de Almacenes, Control de Inventario y Planeamiento de Inventario?",
       "options": [
         "Catalogar los nuevos materiales a usarse en la operación, de acuerdo a los requerimientos de los diferentes usuarios y las políticas de inventario de MCP.",
         "Evaluar las estrategias de reposición de inventarios, controlando su ejecución y realizando los reportes de gestión requeridos.",
@@ -228,12 +228,12 @@
     },
     {
       "type": "boolean",
-      "question": "¿Es importante tener experiencia en 'Diseño de Moda' para trabajar en Planeamiento de Inventario?",
+      "question": "¿Es importante tener experiencia en 'Diseño de Moda' para trabajar en el área de Almacenes, Control de Inventario y Planeamiento de Inventario?",
       "answer": false
     },
     {
       "type": "choice",
-      "question": "¿Cuál es el aspecto más importante para trabajar en el área de Planeamiento de Inventario?",
+      "question": "¿Cuál es el aspecto más importante para trabajar en el área de Almacenes, Control de Inventario y Planeamiento de Inventario?",
       "options": [
         "Experiencia en el sector y especialización técnica",
         "Tener muchos contactos en redes sociales",
@@ -284,6 +284,9 @@
     }
   ]
 };
+
+  quizzesByArea["almacenes-y-control-de-inventario"].push(...quizzesByArea["planeamiento-de-inventario"]);
+  delete quizzesByArea["planeamiento-de-inventario"];
 
   global.quizzesByArea = quizzesByArea;
 
